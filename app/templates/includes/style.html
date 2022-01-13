@@ -1,0 +1,65 @@
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+    #table {
+        overflow: auto;
+        max-height: 800px;
+    }
+
+    #table table {
+        table-layout:fixed;
+        min-width:100%;
+    }
+    td.cell {
+        min-width: 35px;
+    }
+    img.cell-img {
+        max-width: 100%;
+        max-height: 30px;
+    }
+    input {
+        width: 100%;
+    }
+    input:focus {
+        border-color: blue;
+        border-width: 4px;
+        border-radius: 3px;
+    }
+    .validated {
+        background-color: #caf7d0;
+    }
+    .corrected {
+        background-color: #ffee98;
+    }
+    #scan {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        {# position: absolute; #}
+    }
+    #scan .dim {
+        opacity: 0.3;
+        height: 100%;
+        width: 100%;
+    }
+
+    #scan div.highlighted-cell {
+        height: 50px;
+        width: 50px;
+        opacity: 1;
+    }
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
