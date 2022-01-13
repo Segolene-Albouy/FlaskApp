@@ -4,20 +4,15 @@ from sqlalchemy.orm import relationship
 db = SQLAlchemy()
 
 # Joint tables
-PersonThing = db.Table('person_thing',
+Participation = db.Table('participation',
                         db.Column('personid', db.Integer, db.ForeignKey('person.id'), primary_key=True),
-                        db.Column('thingid', db.Integer, db.ForeignKey('thing.id'), primary_key=True),
-                        db.Column('isTrue', db.Boolean))
+                        db.Column('eventid', db.Integer, db.ForeignKey('event.id'), primary_key=True),
+                        db.Column('desc', db.Boolean))
 
-PersonSubject = db.Table('person_subject',
-                      db.Column('personid', db.Integer, db.ForeignKey('person.id'), primary_key=True),
-                      db.Column('subjectid', db.Integer, db.ForeignKey('subject.id'), primary_key=True),
-                      db.Column('isTrue', db.Boolean))
-
-ThingSubject = db.Table('thing_subject',
-                      db.Column('thingid', db.Integer, db.ForeignKey('thing.id'), primary_key=True),
-                      db.Column('subjectid', db.Integer, db.ForeignKey('subject.id'), primary_key=True),
-                      db.Column('isTrue', db.Boolean))
+Relation = db.Table('relation',
+                      db.Column('pers1id', db.Integer, db.ForeignKey('person.id'), primary_key=True),
+                      db.Column('pers2id', db.Integer, db.ForeignKey('person.id'), primary_key=True),
+                      db.Column('desc', db.Text))
 
 
 class Person(db.Model):
@@ -27,38 +22,29 @@ class Person(db.Model):
     firstname = db.Column(db.Text)
 
 
-class Thing(db.Model):
-    __tablename__ = "thing"
+class Event(db.Model):
+    __tablename__ = "event"
     id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
-    title = db.Column(db.Text)
-    provenance = db.Column(db.Text)
-    decade = db.Column(db.Integer)
-    isTrue = db.Column(db.Boolean)
+    name = db.Column(db.Text)
+    date = db.Column(db.Date)
+    desc = db.Column(db.Text)
+    place_id = db.Column(db.Integer, db.ForeignKey('place.id'))
+
+    @staticmethod
+    def add_event(name, date, place, desc=""):
+        event = Event(name=name, date=date, place_id=place.id, desc=desc)
+        try:
+            db.session.add(event)
+            db.session.commit()
+            return event
+        except Exception as e:
+            return False, [str(e)]
 
 
-class Subject(db.Model):
-    __tablename__ = "subject"
+class Place(db.Model):
+    __tablename__ = "place"
     id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
     date = db.Column(db.Text)
     decade = db.Column(db.Integer)
     url = db.Column(db.Text)
-    subjecttype = db.Column(db.Text)
-
-
-class Response(db.Model):
-    __tablename__ = "response"
-    id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
-    thingid = db.Column(db.Integer, db.ForeignKey('thing.id'))
-    isTrue = db.Column(db.Boolean)
-    answer = db.Column(db.Boolean)
-    thingProvenance = db.Column(db.Text)
-
-    @staticmethod
-    def add_response(thing, answer):
-        response = Response(thingid=thing.id, isTrue=thing.isTrue, answer=answer, thingProvenance=thing.provenance)
-        try:
-            db.session.add(response)
-            db.session.commit()
-            return response
-        except Exception as e:
-            return False, [str(e)]
+    placetype = db.Column(db.Text)
