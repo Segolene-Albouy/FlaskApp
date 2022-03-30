@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
+from app import db
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 # Joint tables
 Participation = db.Table('participation',
