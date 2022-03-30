@@ -1,8 +1,10 @@
 from flask import Flask, render_template
-# from flask_migrate import Migrate
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 
 from app.utils.const import TEMPLATE_DIR, STATIC_DIR, APP_NAME, CONFIG
-from .models.model import Thing, db
+from app.models.model import Person #, db
+from app.routes import routes
 
 app = Flask(
     __name__,
@@ -10,18 +12,20 @@ app = Flask(
     static_folder=STATIC_DIR
 )
 
-@app.context_processor
-def global_jinja_variables():
-    return {"app_title": APP_NAME}
+db = SQLAlchemy()
 
-
-@app.route("/", methods=["GET", "POST"])
-def home():
-    # thesis = Thesis.query.all()
-    return render_template(
-        "pages/index.html",
-        nom="app",
-    )
+# @app.context_processor
+# def global_jinja_variables():
+#     return {"app_title": APP_NAME}
+#
+#
+# @app.route("/", methods=["GET", "POST"])
+# def home():
+#     # person = Person.query.all()
+#     return render_template(
+#         "pages/index.html",
+#         nom="app",
+#     )
 
 
 # @app.route("/post", methods=["POST"])
@@ -33,14 +37,14 @@ def home():
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.db'
-# migrate = Migrate(app, db)
+migrate = Migrate(app, db)
 
 
 def config_app(config_name="dev"):
     """ Create the application """
-    # db.init_app(app)
-    # db.app = app
-    # db.create_all()
+    db.init_app(app)
+    db.app = app
+    db.create_all()
     app.config.from_object(CONFIG[config_name])
     return app
 
