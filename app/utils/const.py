@@ -4,8 +4,7 @@ from warnings import warn
 
 SECRET_KEY = "SECRET KEY!"
 ROOT_DIR = Path(
-    os.path.dirname(os.path.abspath(__file__)).split("FlaskApp", 1)[0]
-    + "FlaskApp"
+    os.path.dirname(os.path.abspath(__file__)).split("FlaskApp", 1)[0] + "FlaskApp"
 )
 APP_DIR = Path(__file__).parent.parent
 TEMPLATE_DIR = APP_DIR / "templates/"
@@ -15,18 +14,22 @@ OUTPUT_DIR = STATIC_DIR / "outputs/"
 
 APP_NAME = "FlaskApp"
 
-db_prod = os.environ.get('DATABASE_URL') if os.environ.get('DATABASE_URL') is None else 'sqlite:///database.db'
+db = (
+    os.environ.get("DATABASE_URL")
+    if os.environ.get("DATABASE_URL") is None
+    else "sqlite:///database.db"
+)
 
 
 class _TEST:
     SECRET_KEY = SECRET_KEY
-    SQLALCHEMY_DATABASE_URI = db_prod
+    SQLALCHEMY_DATABASE_URI = db
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class _PRODUCTION:
     SECRET_KEY = SECRET_KEY
-    SQLALCHEMY_DATABASE_URI = db_prod
+    SQLALCHEMY_DATABASE_URI = db
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 

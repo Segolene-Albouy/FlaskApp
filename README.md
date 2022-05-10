@@ -4,7 +4,7 @@
 
 ### Pre-requisites
 
-- `python3`
+- `python3.9`: not working with python 3.10
 - `pip3`
 - `conda`
 
