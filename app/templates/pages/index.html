@@ -1,8 +1,21 @@
 {% extends "layout/layout.html" %}
 {% block content %}
-	<div>
-		<h1 class="h2 mb-3 font-weight-normal">Salut les copichoux</h1>
-		<h2 class="h4 mb-3 font-weight-normal">Vouzètotop</h2>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Run!</button>
-	</div>
+	<form method="post" enctype="multipart/form-data" id="file-form">
+        <div class="row padded">
+            <h1>FlaskApp</h1>
+            <div class="col-md-6 padded">
+                <label for="input-file">
+                    Upload a file
+                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top"
+                            data-content="Accepted extensions: .jpg, .pdf, .tiff">
+                        ?
+                    </button>
+                    <input id="input-file" type="file" name="file" required />
+                </label>
+            </div>
+            <div class="col-md-6 padded">
+                <button class="btn btn-lg btn-dark" type="submit">Upload!</button>
+            </div>
+        </div>
+    </form>
 {% endblock %}

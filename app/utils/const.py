@@ -14,6 +14,8 @@ OUTPUT_DIR = STATIC_DIR / "outputs/"
 
 APP_NAME = "FlaskApp"
 
+VALID_EXTENSIONS = ["jpeg", "JPEG", "jpg", "JPG", "pdf", "tiff"]
+
 db = (
     os.environ.get("DATABASE_URL")
     if os.environ.get("DATABASE_URL") is None

@@ -1,7 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500&display=swap');
+
+:root {
+    --nav-grey: #d0d0d0;
+    --nav-grey-border: #c5c5c5;
+}
+
 html, body {
-  height: 100%;
+    height: 100%;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Inconsolata', monospace;
 }
 
 body {
-  background-color: #e3e3e3;
+    background-color: #e3e3e3;
+}
+
+.vertical-align {
+    vertical-align: middle;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* FOOTER */
+.footer {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    min-height: 200px;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.footer-grey {
+    border-top: solid 1px var(--nav-grey-border);
+    margin-bottom: -30px;
+    background-color: var(--nav-grey);
+}
+
+#logo-footer {
+    margin-top: 20px;
+}
+
+.footer img {
+    max-height: 75px;
+}
+
+/* NAVBAR */
+.navbar, #navbar {
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 1px 25px;
+}
+
+.nav-grey {
+    background-color: var(--nav-grey);
+}
+
+.navbar-grey {
+    border-bottom: solid 1px var(--nav-grey-border) !important;
+}
+
+#app-title {
+    color: #181818;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.padded {
+    padding: 2em;
 }

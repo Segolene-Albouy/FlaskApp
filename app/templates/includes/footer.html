@@ -1,5 +1,41 @@
-<footer class="blog-footer" style="background-color: #848484">
-    <div class="container" style="padding: 1em; text-align: center">
-        <p style="color: #ffffff">Observatoire de Paris - 2021</p>
-    </div>
-</footer>
+<div class="col-sm-12">
+    <footer class="footer footer-grey {# fixed-bottom #}">
+        <div class="container hasTable">
+            <table id="logo-footer">
+                <tr>
+                    <td class="vertical-align">
+                        <a href="#">
+                            <img src="{{url_for('static', filename='img/magnet.png')}}" alt="Magnet icon">
+                        </a>
+                    </td>
+                    <td class="vertical-align">
+                        <a href="#">
+                            <img src="{{url_for('static', filename='img/light.png')}}" alt="Light icon">
+                        </a>
+                    </td>
+                    <td class="vertical-align">
+                        <a href="#">
+                            <img src="{{url_for('static', filename='img/umbrella.png')}}" alt="Umbrella icon" style="max-width: 100%;">
+                        </a>
+                    </td>
+                    <td class="vertical-align">
+                        <a href="#">
+                            <img src="{{url_for('static', filename='img/roller.png')}}" alt="Roller skate icon">
+                        </a>
+                    </td>
+                    <td class="vertical-align">
+                        <a href="#">
+                            <img src="{{url_for('static', filename='img/icecream.png')}}" alt="Ice cream icon">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+        </div>
+        <p style="padding-bottom: 20px;">
+            FlaskApp is a minimal set up to build a web app
+            <br>
+            © Ségolène Albouy
+        </p>
+    </footer>
+</div>
