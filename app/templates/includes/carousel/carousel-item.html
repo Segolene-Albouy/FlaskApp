@@ -1,0 +1,51 @@
+{% if context == "css" %}
+    <style>
+        .carousel-caption {
+            color: ghostwhite;
+        }
+        .carousel-link {
+            margin: 1em;
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            width: 45vw;
+            border-radius: 1em;
+        }
+        .carousel-img {
+            position: absolute;
+            width: 100%;
+            min-height: 100%;
+            -webkit-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            background-position: center;
+            bottom: 0;
+            filter: brightness(0.8) saturate(1.1) contrast(0.9);
+            left: 50%;
+            right: 0;
+            top:50%;
+            transform-origin: center;
+            transform: scale(1.05) translateZ(0) translate(-50%,-50%);
+            transition:
+                    filter 300ms linear,
+                    transform 200ms linear;
+        }
+        .carousel-img:hover {
+            transform: scale(1.06) translate(-50%,-50%);
+            filter: brightness(0.9);
+        }
+    </style>
+{% elif context == "html" %}
+    <div class="carousel-item {% if key == active %}active{% endif %}">
+        <a class="carousel-link d-flex justify-content-center" href="{{ item.url }}">
+            <img src="{{ item.img }}" alt="Image to {{ item.header }}" class="carousel-img">
+            <div class="carousel-caption" >
+                <h3 class="carousel-title">{{ item.header }}</h3>
+                {% if item.subtitle %}<p class="carousel-subtitle">{{ item.subtitle }}</p>{% endif %}
+            </div>
+        </a>
+    </div>
+{% endif %}
+

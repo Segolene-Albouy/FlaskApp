@@ -1,0 +1,35 @@
+{% if context == "css" %}
+    <style>
+        .parallax-img {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            background-position: 50% 50%;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .parallax-text {
+            color: whitesmoke;
+            background-color: rgba(65, 65, 65, 0.7);
+            padding: 1em 0.5em;
+            border-radius: 1em;
+        }
+        .parallax-title {
+            font-size: 75px;
+            font-weight: bold;
+            text-shadow: #331700FF 0 0 25px,
+                         #331700FF 0 0 25px;
+        }
+        .parallax-subtitle {
+            font-size: 20px;
+        }
+    </style>
+{% elif context == "html" %}
+    <div class="parallax-img jumbotron-fluid" style="background-image: url({{ page.img }})">
+        <div class="container">
+            <div class="parallax-text">
+                <h1 class="display-4 parallax-title">{{ page.header }}</h1>
+                <p class="parallax-subtitle">{{ page.category }} </p>
+            </div>
+        </div>
+    </div>
+{% endif %}

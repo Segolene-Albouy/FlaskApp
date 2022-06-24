@@ -9,15 +9,12 @@
 		<title>{{ title }} | {{ app_title }}</title>
 	</head>
     <body style="overflow-x: hidden;">
+        {% set context = "html" %}
         {% include 'includes/navbar.html' %}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="container" style="min-height: 750px;">
-                    <div id="content" class="col-md-8 offset-md-2">
-                        {% block content %}
-                        {% endblock %}
-                    </div>
-                </div>
+        <div id="page-content" class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
         {% include "includes/footer.html" %}

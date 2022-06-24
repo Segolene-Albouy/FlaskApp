@@ -3,16 +3,18 @@
 :root {
     --nav-grey: #d0d0d0;
     --nav-grey-border: #c5c5c5;
+    --body: 'Outfit', sans-serif;
+    --title: 'Inconsolata', monospace;
 }
 
 html, body {
     height: 100%;
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--body);
     font-weight: 200;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Inconsolata', monospace;
+    font-family: var(--title);
 }
 
 body {
@@ -34,53 +36,10 @@ table {
     width: 100%;
 }
 
-/* FOOTER */
-.footer {
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    min-height: 200px;
-    background-color: #fafafa;
-    text-align: center;
-}
-
-.footer-grey {
-    border-top: solid 1px var(--nav-grey-border);
-    margin-bottom: -30px;
-    background-color: var(--nav-grey);
-}
-
-#logo-footer {
-    margin-top: 20px;
-}
-
-.footer img {
-    max-height: 75px;
-}
-
-/* NAVBAR */
-.navbar, #navbar {
-    font-family: 'Inconsolata', monospace;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 1px 25px;
-}
-
-.nav-grey {
-    background-color: var(--nav-grey);
-}
-
-.navbar-grey {
-    border-bottom: solid 1px var(--nav-grey-border) !important;
-}
-
-#app-title {
-    color: #181818;
-    font-size: 25px;
-    font-weight: 500;
-}
-
 .padded {
     padding: 2em;
+}
+
+#page-content {
+    min-height: 80vh;
 }
