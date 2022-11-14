@@ -2,11 +2,36 @@
 
 ## Set-up
 
+> Instructions are for Ubuntu based distributions
+
 ### Pre-requisites
 
+```bash
+sudo apt update
+sudo apt install wget software-properties-common 
+```
+
+- `sudo` privileges
+- `git` and [SSH access to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) configured
+```bash
+sudo apt install git
+```
 - `python3.9`: not working with python 3.10
+```bash
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.9 
+```
 - `pip3`
-- `conda`
+```bash
+sudo apt install python3.9-distutils
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3.9 get-pip.py
+```
+- `virtualenv`
+```bash
+apt install python3.9-dev python3.9-venv
+```
 
 ### Install
 
