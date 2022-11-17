@@ -75,3 +75,30 @@ source venv/bin/activate
 python3.9 run.py
 ```
 3. Visit [localhost:5000](localhost:5000)
+
+## Deploy to Heroku
+
+> [Deployment instructions](https://devcenter.heroku.com/articles/git)
+> Pre-requisites: You have a Heroku account linked to Salesforce Authenticator
+
+1. Install the Heroku CLI
+```shell
+curl https://cli-assets.heroku.com/install-ubuntu.sh | sh # Linux
+brew tap heroku/brew && brew install heroku # MacOS
+```
+2. Verify your installation
+```shell
+heroku --version
+```
+3. Connect to Heroku
+```shell
+heroku login
+```
+4. Init app (`app-name` must be unique)
+```shell
+heroku create <app-name>
+```
+5. Push code
+```shell
+git push heroku main
+```
