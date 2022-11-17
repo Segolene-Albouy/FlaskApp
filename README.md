@@ -2,28 +2,40 @@
 
 ## Set-up
 
-> Instructions are for Ubuntu based distributions
+> Instructions are for Linux/macOS based distributions
 
 ### Pre-requisites
 
 ```bash
+# Linux
 sudo apt update
-sudo apt install wget software-properties-common 
-```
+sudo apt install wget software-properties-common
 
+# MacOS
+sudo brew update
+```
 - `sudo` privileges
 - `git` and [SSH access to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) configured
 ```bash
-sudo apt install git
+sudo apt install git # Linux
+git --version # MacOS
 ```
 - `python3.9`: not working with python 3.10
 ```bash
+# Check which python versions you have installed
+ls /usr/bin/python*
+
+# Linux
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install python3.9 
+sudo apt install python3.9
+
+# MacOS
+brew install python@3.9
 ```
-- `pip3`
+- `pip3.9`
 ```bash
+# Linux
 sudo apt install python3.9-distutils
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3.9 get-pip.py
