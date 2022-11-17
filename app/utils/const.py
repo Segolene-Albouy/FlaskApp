@@ -9,8 +9,9 @@ ROOT_DIR = Path(
 APP_DIR = Path(__file__).parent.parent
 TEMPLATE_DIR = APP_DIR / "templates/"
 STATIC_DIR = APP_DIR / "static/"
-UPLOAD_DIR = STATIC_DIR / "uploads/"
-OUTPUT_DIR = STATIC_DIR / "outputs/"
+DATA_DIR = STATIC_DIR / "data/"
+UPLOAD_DIR = DATA_DIR / "inputs/"
+OUTPUT_DIR = DATA_DIR / "outputs/"
 
 APP_NAME = "FlaskApp"
 

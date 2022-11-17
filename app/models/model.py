@@ -55,7 +55,7 @@ class Place(db.Model):
     id = db.Column(
         db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True
     )
-    date = db.Column(db.Text)
-    decade = db.Column(db.Integer)
-    url = db.Column(db.Text)
+    placename = db.Column(db.Text)
+    country = db.Column(db.Text)
+    coord = db.Column(db.Text)
     placetype = db.Column(db.Text)

@@ -65,3 +65,7 @@ docs/_build/
 target/
 
 .DS_Store
+
+# uploaded files and output files (but keep empty folder)
+app/static/data/inputs/[^.]*
+app/static/data/outputs/[^.]*
