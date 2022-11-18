@@ -6,6 +6,8 @@ from pathlib import Path
 from IPython.display import Image
 import json
 
+from gtts import gTTS
+
 # from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from werkzeug.utils import secure_filename
@@ -21,7 +23,7 @@ from app.utils.const import (
     OUTPUT_DIR,
     CONFIG,
 )
-from app.utils.utils import empty_dir, check_extension
+from app.utils.utils import empty_dir, check_extension, pdf_to_text
 
 from app.app import app, db
 
@@ -45,21 +47,21 @@ def home():
                     f.save(f"{UPLOAD_DIR}/{filename}")
                     # do something with file
 
-                    return redirect(url_for("view", filename=filename))
+                    return redirect(url_for("listen", filename=filename))
                 except IOError as e:
                     app.logger.exception(e)
                     flash("Can't save and process file!", "error")
                 flash("Do not know what happened!", "error")
             else:
-                flash("The file does not have the correct extension!", "error")
+                flash("The file does not a pdf!", "error")
         else:
             flash("Error while importing the file!", "error")
 
     return render_template("pages/index.html", title="Index")
 
 
-@app.route("/view/<filename>", methods=["GET"])
-def view(filename):
+@app.route("/listen/<filename>", methods=["GET"])
+def listen(filename):
     if filename is None:
         flash("No filename provided", "error")
         return redirect(url_for("home"))
@@ -70,8 +72,8 @@ def view(filename):
 
     return render_template(
         "pages/view.html",
-        file=filename,
-        title="View your file",
+        file=pdf_to_text(filename.split('.')[0]),
+        title="Listen your pdf",
     )
 
 # @app.route("/post", methods=["POST"])

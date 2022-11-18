@@ -1,6 +1,12 @@
 {% extends "layout/layout.html" %}
 {% block content %}
     <div class="col-sm-11 col-md-10 col-lg-9 padded">
-        <img src="{{ url_for('static', filename='data/inputs/' + file) }}">
+        <audio
+            controls
+            src="{{ url_for('static', filename='data/outputs/' + file) }}">
+                <a href="{{ url_for('static', filename='data/outputs/' + file) }}">
+                    Download audio
+                </a>
+        </audio>
     </div>
 {% endblock %}
